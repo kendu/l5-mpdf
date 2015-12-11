@@ -37,6 +37,7 @@ class ServiceProvider extends BaseServiceProvider {
 
                     $mpdf=new \mPDF(
                         Config::get('pdf.mode'),
+                        Config::get('pdf.format'),
                         Config::get('pdf.defaultFontSize'),
                         Config::get('pdf.defaultFont'),
                         Config::get('pdf.marginLeft'),
@@ -44,7 +45,7 @@ class ServiceProvider extends BaseServiceProvider {
                         Config::get('pdf.marginTop'),
                         Config::get('pdf.marginBottom'),
                         Config::get('pdf.marginHeader'),
-                        Config::get('pdf.Footer'),
+                        Config::get('pdf.marginFooter'),
                         Config::get('pdf.orientation')
                     );
                     $mpdf->SetProtection(array('print'));
