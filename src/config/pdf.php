@@ -40,5 +40,6 @@ return [
         'user_password' => null,
         'owner_password' => null,
         'length' => 40,
+        'enabled' => true,
     ],
 ];
