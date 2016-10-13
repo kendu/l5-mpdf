@@ -1,5 +1,5 @@
 {
-    "name": "kendu/l5-mpdf",
+    "name": "umertasov/l5-mpdf",
     "description": "mPDF wrapper for Laravel 5",
     "version": "0.1",
     "keywords": ["laravel","mpdf", "pdf"],
