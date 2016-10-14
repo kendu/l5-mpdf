@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "mpdf/mpdf": "5.7.*"
+        "mpdf/mpdf": "6.1.*"
     },
     "autoload": {
         "psr-0": {
