@@ -48,18 +48,20 @@ class ServiceProvider extends BaseServiceProvider {
                         Config::get('pdf.orientation')
                     );
 
-                    $permissions = [];
-                    foreach (Config::get('pdf.protection.permissions') as $perm => $enable) {
-                        if ($enable) {
-                            $permissions[] = $perm;
+                    if (Config::get('pdf.protection.enabled', true)) {
+                        $permissions = [];
+                        foreach (Config::get('pdf.protection.permissions') as $perm => $enable) {
+                            if ($enable) {
+                                $permissions[] = $perm;
+                            }
                         }
+                        $mpdf->SetProtection(
+                            $permissions,
+                            Config::get('pdf.protection.user_password'),
+                            Config::get('pdf.protection.owner_password'),
+                            Config::get('pdf.protection.length')
+                        );
                     }
-                    $mpdf->SetProtection(
-                        $permissions,
-                        Config::get('pdf.protection.user_password'),
-                        Config::get('pdf.protection.owner_password'),
-                        Config::get('pdf.protection.length')
-                    );
                     $mpdf->SetTitle(Config::get('pdf.title'));
                     $mpdf->SetAuthor(Config::get('pdf.author'));
                     $mpdf->SetWatermarkText(Config::get('pdf.watermark'));
