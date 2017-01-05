@@ -67,6 +67,9 @@ class PdfWrapper {
      */
     public function output(){
 
+        $errorlevel = error_reporting();
+        error_reporting($errorlevel & ~E_NOTICE);
+
         if($this->html)
         {
             $this->mpdf->WriteHTML($this->html);
@@ -76,7 +79,11 @@ class PdfWrapper {
             $this->mpdf->WriteHTML($this->file);
         }
 
-        return $this->mpdf->Output('', 'S');
+        $output = $this->mpdf->Output('', 'S');
+        
+        error_reporting($errorlevel);
+    
+        return $output;
     }
 
     /**
@@ -87,6 +94,9 @@ class PdfWrapper {
      */
     public function save($filename){
 
+        $errorlevel = error_reporting();
+        error_reporting($errorlevel & ~E_NOTICE);
+
         if($this->html)
         {
             $this->mpdf->WriteHTML($this->html);
@@ -96,7 +106,11 @@ class PdfWrapper {
             $this->mpdf->WriteHTML($this->file);
         }
 
-        return $this->mpdf->Output($filename, 'F');
+        $output = $this->mpdf->Output($filename, 'F');
+        
+        error_reporting($errorlevel);
+    
+        return $output;
     }
 
     /**
@@ -107,6 +121,9 @@ class PdfWrapper {
      */
     public function download($filename = 'document.pdf' ){
 
+        $errorlevel = error_reporting();
+        error_reporting($errorlevel & ~E_NOTICE);
+
         if($this->html)
         {
             $this->mpdf->WriteHTML($this->html);
@@ -116,7 +133,11 @@ class PdfWrapper {
             $this->mpdf->WriteHTML($this->file);
         }
 
-        return $this->mpdf->Output($filename, 'D');
+        $output = $this->mpdf->Output($filename, 'D');
+        
+        error_reporting($errorlevel);
+    
+        return $output;
     }
 
     /**
@@ -126,6 +147,10 @@ class PdfWrapper {
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function stream($filename = 'document.pdf' ){
+
+        $errorlevel = error_reporting();
+        error_reporting($errorlevel & ~E_NOTICE);
+
         if($this->html)
         {
             $this->mpdf->WriteHTML($this->html);
@@ -135,7 +160,11 @@ class PdfWrapper {
             $this->mpdf->WriteHTML($this->file);
         }
 
-        return $this->mpdf->Output($filename, 'I');
+        $output = $this->mpdf->Output($filename, 'I');
+        
+        error_reporting($errorlevel);
+    
+        return $output;
     }
 
     public function __call($name, $arguments){
