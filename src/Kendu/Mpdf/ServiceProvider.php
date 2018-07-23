@@ -25,7 +25,7 @@ class ServiceProvider extends BaseServiceProvider {
     public function register()
     {
         $this->app->bind('mpdf.wrapper', function($app,$cfg)  {
-            $app['mpdf.pdf'] = $app->share(function($app) use($cfg){
+            $app['mpdf.pdf'] = $app->singleton(function($app) use($cfg){
 
                     if( ! empty($cfg))
                     {
